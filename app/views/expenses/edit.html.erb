@@ -1,0 +1,15 @@
+<% provide :title, "Sửa được k" %>
+
+<div class="col-md-12" id="main">
+  <%= form_for @expense, url: expense_path, method: :patch  do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label "Mua gì" %>
+  <%= f.text_field :description, required: true %>
+
+  <%= f.label "Tổng" %>
+  <%= f.text_field :amount, required: true %>
+
+  <%= f.submit "Gửi", class: "btn btn-primary" %>
+<% end %>
+
+</div>

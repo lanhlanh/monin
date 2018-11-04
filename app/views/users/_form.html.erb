@@ -1,0 +1,19 @@
+<%= form_for object do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  
+  <% if object.new_record? %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  <% end %>
+
+  <% unless object.new_record? %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :password_confirmation, t(".btn_confirm") %>
+    <%= f.password_field :password_confirmation %>
+  <% end %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

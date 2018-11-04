@@ -1,0 +1,22 @@
+
+<div class="col-md-12 col-sm-12" id="main">
+  <h1>Lịch Sử Chốt</h1>
+  <table>
+    <tr>
+      <th>Khoảng Thời Gian</th>
+      <th>Trạng Thái</th>
+      <th>Xem Chi Tiết</th>
+    </tr>
+    <% @range_times.each do |range_time| %>
+      <tr>
+          <td><%= range_time.start_time %> - <%= range_time.end_time %></td>
+          <td><%= range_time.end_time ? "Đã Chốt" : "Chưa Chốt Đâu" %></td>
+          <td>
+            <% if range_time.end_time %>
+              <%= link_to "Chi Tiết", range_time_path(range_time) %>
+            <% end %>
+          </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

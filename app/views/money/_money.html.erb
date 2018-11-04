@@ -1,0 +1,14 @@
+
+<tr>
+  <td><%= money.user.name %></td>
+  <td><%= money.create_at %></td>
+  <td><%= money.description %></td>
+  <td><%= money.amount %></td>
+  <% if current_user.admin? %>
+    <td>
+      <%= link_to "Edit", edit_expense_path(money) %>
+      |
+      <%= link_to "Xoa", expense_path(money), method: :delete, data: {confirm: "Are you sure!"} %>
+    </td>
+  <% end %>
+</tr>

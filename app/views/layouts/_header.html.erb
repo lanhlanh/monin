@@ -1,0 +1,29 @@
+<header class="navbar">
+  <div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to "Nhập Chi Tiêu", root_path %></li>
+          <li><%= link_to "Lịch Sử Chi", expenses_path %></li>
+          <li><%= link_to "Thống kê hiện tại", results_path %></li>
+          <li><%= link_to "Lịch Sử Chốt Sổ", range_times_path %></li>
+          <li class="dropdown">
+            <%= link_to "#", class: "dropdown-toggle",
+              data: {toggle: "dropdown"} do %>
+            <%= current_user.name %>
+            <b class="caret"></b>
+            <% end %>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Nhiều người", users_path %></li>
+              <li><%= link_to "Đổi mật khẩu", edit_user_path(current_user) %></li>
+              <li class="divider"></li>
+              <li><%= link_to t(".logout"), logout_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t(".login"), login_path %></li>
+        <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
