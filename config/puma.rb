@@ -53,7 +53,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 #
 
 # change to match your CPU core count
-workers 1
+workers 2
 
 # Min and Max threads per worker
 threads 1, 6
