@@ -3,7 +3,7 @@ lock "~> 3.11.0"
 
 set :application, "monin"
 set :repo_url, "git@github.com:lanhlanh/monin.git"
-set :rbenv_ruby, '2.6.1'
+set :rbenv_ruby, '2.5.1'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
