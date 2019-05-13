@@ -30,6 +30,11 @@ gem "faker", "1.7.3"
 gem "pg"
 gem 'rack-cors', require: 'rack/cors'
 # gem 'mini_racer', platforms: :ruby
+gem "capistrano"
+gem "capistrano3-puma"
+gem "capistrano-rails", require: false
+gem "capistrano-bundler", require: false
+gem "capistrano-rvm"
 
 group :development, :test do
   gem "better_errors"
