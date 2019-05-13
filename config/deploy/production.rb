@@ -62,5 +62,5 @@
 set :stage, :production
 set :rails_env, :production
 set :deploy_to, "/deploy/apps/monin"
-set :branch, :config_deploy
+set :branch, :master
 server "18.191.179.96", user: "deploy", roles: %w(web app db)
