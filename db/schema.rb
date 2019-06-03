@@ -12,10 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2018_09_28_153129) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "money", force: :cascade do |t|
+  create_table "money", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
     t.float "amount"
     t.text "description"
@@ -26,12 +23,12 @@ ActiveRecord::Schema.define(version: 2018_09_28_153129) do
     t.integer "range_time_id"
   end
 
-  create_table "range_times", force: :cascade do |t|
+  create_table "range_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "start_time"
     t.date "end_time"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "password_digest"

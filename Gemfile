@@ -8,7 +8,7 @@ end
 ruby "2.5.1"
 
 gem "rails", "~> 5.2.0"
-
+gem "mysql2"
 gem "bcrypt", "3.1.11"
 gem "puma", "~> 3.7"
 gem "sass-rails", "~> 5.0"
@@ -27,7 +27,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "i18n-js"
 gem "faker", "1.7.3"
-gem "pg"
+# gem "pg"
 gem 'rack-cors', require: 'rack/cors'
 # gem 'mini_racer', platforms: :ruby
 gem "capistrano"

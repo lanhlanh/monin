@@ -31,6 +31,7 @@ rerun.txt
 pickle-email-*.html
 .project
 /public/uploads
+config/database.yml
 config/settings.local.yml
 config/settings/*.local.yml
 config/settings/*.yml
