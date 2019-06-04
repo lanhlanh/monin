@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_many :money, dependent: :destroy
 
+  has_many :money_user_crazies, dependent: :destroy
+
   scope :admins, ->{where admin: true}
 
   before_save :email_downcase

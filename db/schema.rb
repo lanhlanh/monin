@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_28_153129) do
+ActiveRecord::Schema.define(version: 2019_06_04_034730) do
 
   create_table "money", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "user_id"
-    t.float "amount"
     t.text "description"
     t.date "create_at"
     t.integer "type_of_money"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "range_time_id"
+    t.float "amount_per_user"
+    t.integer "num_of_user"
+  end
+
+  create_table "money_user_crazies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "money_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["money_id"], name: "index_money_user_crazies_on_money_id"
+    t.index ["user_id"], name: "index_money_user_crazies_on_user_id"
   end
 
   create_table "range_times", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,4 +49,6 @@ ActiveRecord::Schema.define(version: 2018_09_28_153129) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "money_user_crazies", "money"
+  add_foreign_key "money_user_crazies", "users"
 end
