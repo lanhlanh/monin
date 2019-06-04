@@ -2,6 +2,9 @@ class Money < ApplicationRecord
   belongs_to :user
   belongs_to :range_time, optional: true
 
+  has_many :money_user_crazies, dependent: :destroy
+  accepts_nested_attributes_for :money_user_crazies
+
   enum type_of_money: %i(expense income)
 
   scope :from_month, -> { where(create_at: Date.current.beginning_of_month..Date.current.end_of_month) }
