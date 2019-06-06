@@ -6,7 +6,7 @@ class ResultsController < ApplicationController
     return redirect_to root_path unless @range_time
     @users = User.all
     @money = @range_time.money
-    @tongtien = @money.sum(:amount)
+    @tongtien = @money.sum(:amount_per_user)
     @tien_tb = (@tongtien/@users.count).round()
   end
 end

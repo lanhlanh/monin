@@ -51,7 +51,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:money).permit %i(description amount)
+    params.require(:money).permit %i(description amount_per_user)
   end
 
   def admin_user
