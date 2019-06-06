@@ -61,7 +61,7 @@ class User < ApplicationRecord
   end
 
   def amount(range_time)
-    money.by_time(range_time).sum(:amount)
+    money.by_time(range_time).sum(:amount_per_user)
   end
 
   private

@@ -14,7 +14,7 @@ class RangeTimesController < ApplicationController
 
     @users = User.all
     @money = @range_time.money
-    @tongtien = @money.sum(:amount)
+    @tongtien = @money.sum(:amount_per_user)
     @tien_tb = (@tongtien/@users.count).round()
   end
 
