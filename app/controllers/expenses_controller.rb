@@ -19,14 +19,13 @@ class ExpensesController < ApplicationController
 
     @expense = current_user.money.build expense_params.merge(type_of_money: :expense, num_of_user: num_of_user, amount_per_user: amount_per_user, create_at: Time.current)
 
-    if num_of_user > 0
+    if num_of_user > 0 && @expense.valid?
       ActiveRecord::Base.transaction do
         @expense.save
         @money_user_crazies = user_ids.each_with_index { |user_id, index| @expense.money_user_crazies.create!(money_id: @expense.id, user_id: user_id.to_i) }
-        @expense.valid?
+        flash[:success]  = "Thêm thành công"
+        redirect_to root_path
       end
-      flash[:success]  = "Thêm thành công"
-      redirect_to root_path
     else
       flash[:warning] = "Thêm thất bạt"
       render :new
