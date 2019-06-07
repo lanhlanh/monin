@@ -4,6 +4,8 @@
   <td><%= money.create_at %></td>
   <td><%= money.description %></td>
   <td><%= money.amount %></td>
+  <td><%= money.num_of_user %></td>
+  <td><%= money.users.pluck(:name) %></td>
   <% if current_user.admin? %>
     <td>
       <%= link_to "Edit", edit_expense_path(money) %>

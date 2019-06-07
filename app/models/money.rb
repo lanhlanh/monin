@@ -3,6 +3,7 @@ class Money < ApplicationRecord
   belongs_to :range_time, optional: true
 
   has_many :money_user_crazies, dependent: :destroy
+  has_many :users, through: :money_user_crazies
   accepts_nested_attributes_for :money_user_crazies
 
   enum type_of_money: %i(expense income)
