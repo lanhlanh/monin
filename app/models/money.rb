@@ -10,8 +10,13 @@ class Money < ApplicationRecord
   scope :from_month, -> { where(create_at: Date.current.beginning_of_month..Date.current.end_of_month) }
   scope :by_time, -> (id){ where(range_time_id: id)}
   validate :time_in_future
+  validate :num_of_user
 
   before_save :create_range_time
+
+  def amount
+    num_of_user.nil? ? amount_per_user : amount_per_user*num_of_user
+  end
 
   private
 
