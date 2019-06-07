@@ -38,7 +38,8 @@ class ExpensesController < ApplicationController
 
   def update
     @expense = Money.find_by id: params[:id]
-    if @expense.update_attributes expense_params
+    amount_per_user = expense_params[:amount_per_user].to_f/@expense.num_of_user.to_f
+    if @expense.update_attributes expense_params.merge(amount_per_user: amount_per_user)
       flash[:success]  = "Update thành công"
     else
       flash[:warning] = "Update thất bạt"

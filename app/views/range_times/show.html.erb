@@ -3,19 +3,20 @@
 
   <h1>Tổng tiêu : <%= @tongtien %></h1>
   <p> Khoảng thời gian: <span class="label label-success"><%= @range_time.start_time if @range_time %> - <%= @range_time.end_time if @range_time %></span></p>
-  <h3>Trung bình: <span class="label label-success"><%= @tien_tb %> K</span></h3>
+  <h3>Trung bình: <span class="label label-success">abc K</span></h3>
   <table>
     <tr>
       <th>Tên</th>
-      <th>Tổng tiền</th>
+      <th>Tổng tiền ăn tháng vừa rồi</th>
+      <th>Tổng chi ra </th>
       <th>Nhận lại</th>
     </tr>
-    <% @users.each do |user| %>
+    <% @users.each_with_index do |user, index| %>
       <tr>
-          <% amount = user.amount(@range_time.id) %>
           <td><%= user.name %></td>
-          <td><%= amount %></td>
-          <td><%= amount - @tien_tb %></td>
+          <td><%= @cost[index] %></td>
+          <td><%= @expenses[index] %></td>
+          <td><%= @expenses[index] - @cost[index] %></td>
       </tr>
     <% end %>
   </table>

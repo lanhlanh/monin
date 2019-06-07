@@ -7,7 +7,10 @@
   <%= f.text_field :description, required: true %>
 
   <%= f.label "Tổng" %>
-  <%= f.text_field :amount_per_user, required: true %>
+  <%= f.text_field :amount_per_user, :value => @expense.amount, required: true %>
+
+  <%= f.label "List Crazy Users (can't edit): " %>
+  <%= label_tag @expense.users.pluck(:name) %>
 
   <%= f.submit "Gửi", class: "btn btn-primary" %>
 <% end %>
