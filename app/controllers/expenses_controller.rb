@@ -8,13 +8,23 @@ class ExpensesController < ApplicationController
   end
 
   def new
-    @expense = current_user.money.build
+    @expense = @expense || current_user.money.build
   end
 
   def create
-    @expense = current_user.money.build expense_params.merge(type_of_money: :expense, create_at: Time.current)
+    user_ids = user_ids_allow
+    num_of_user = user_ids.count
 
-    if @expense.save
+    amount_per_user = expense_params[:amount_per_user].to_f/num_of_user.to_f if num_of_user > 0
+
+    @expense = current_user.money.build expense_params.merge(type_of_money: :expense, num_of_user: num_of_user, amount_per_user: amount_per_user, create_at: Time.current)
+
+    if num_of_user > 0
+      ActiveRecord::Base.transaction do
+        @expense.save
+        @money_user_crazies = user_ids.each_with_index { |user_id, index| @expense.money_user_crazies.create!(money_id: @expense.id, user_id: user_id.to_i) }
+        @expense.valid?
+      end
       flash[:success]  = "Thêm thành công"
       redirect_to root_path
     else
@@ -51,7 +61,7 @@ class ExpensesController < ApplicationController
   private
 
   def expense_params
-    params.require(:money).permit %i(description amount_per_user)
+    params.require(:money).permit(:description, :amount_per_user, money_user_crazies_attributes: [:money_id, :user_id])
   end
 
   def admin_user
@@ -59,5 +69,12 @@ class ExpensesController < ApplicationController
       flash[:danger] = "Không được phép truy cập"
       redirect_to root_url
     end
+  end
+
+  def user_ids_allow
+    user_ids = []
+    ids = params[:user_ids].split(" ").to_a if params[:user_ids]
+    ids.each_with_index { |id| user_ids << id.to_i if(User.find_by(id: id.to_i)) }
+    user_ids
   end
 end

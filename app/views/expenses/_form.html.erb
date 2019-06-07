@@ -6,5 +6,20 @@
   <%= f.label t(".amount") %>
   <%= f.text_field :amount_per_user, required: true %>
 
+  <table style="width:100%; font-size: 15px;">
+    <tr>
+      <th>Crazy User's Name</th>
+      <th>Crazy User's ID</th>
+    </tr>
+    <% User.all.each_with_index do |user| %>
+      <tr>
+        <td><strong><%= user.name %></strong></td>
+        <td><strong><%= user.id %></strong></td>
+      </tr>
+    <% end %>
+  </table>
+  <%= label_tag "Based on data from the table above, enter ID of the crazy users.Spaced by a space:" %>
+  <%= text_field_tag "user_ids", nil, required: true %>
+
   <%= f.submit "Gửi", class: "btn btn-primary" %>
 <% end %>

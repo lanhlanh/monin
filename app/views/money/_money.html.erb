@@ -3,7 +3,7 @@
   <td><%= money.user.name %></td>
   <td><%= money.create_at %></td>
   <td><%= money.description %></td>
-  <td><%= money.amount_per_user %></td>
+  <td><%= money.amount %></td>
   <% if current_user.admin? %>
     <td>
       <%= link_to "Edit", edit_expense_path(money) %>
