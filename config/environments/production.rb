@@ -89,5 +89,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.secret_key_base = Figaro.env.secret_key_base
+  config.secret_key_base = Figaro.env.SECRET_KEY_BASE
 end
