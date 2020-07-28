@@ -182,7 +182,7 @@ GEM
       execjs (>= 1.4.0)
       multi_json (~> 1.0)
       therubyracer (~> 0.12.1)
-    json (2.1.0)
+    json (2.3.1)
     kwalify (0.7.2)
     libv8 (3.16.14.19)
     listen (3.1.5)
